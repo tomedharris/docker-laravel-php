@@ -1,0 +1,55 @@
+# name: Build images
+
+# on:
+#   push:
+#     branches:
+#       - master
+#   schedule:
+#     - cron: '40 04 * * 6' # At 04:40 on Saturdays
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+
+#       - name: Docker login
+#         uses: azure/docker-login@v1
+#         with:
+#           login-server: dkr.tharris.io
+#           username: ${{ secrets.DOCKER_USERNAME }}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
+
+#       - name: Build 6-cli
+#         uses: elgohr/Publish-Docker-Github-Action@master
+#         with:
+#           name: tharrisio/laravel-php
+#           context: 6/cli
+#           username: ${{ secrets.DOCKER_USERNAME }}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
+#           registry: dkr.tharris.io
+#           cache: ${{ github.event_name != 'schedule' }}
+#           tags: "6-cli"
+
+#       - name: Build 6-fpm
+#         uses: elgohr/Publish-Docker-Github-Action@master
+#         with:
+#           name: tharrisio/laravel-php
+#           context: 6/fpm
+#           username: ${{ secrets.DOCKER_USERNAME }}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
+#           registry: dkr.tharris.io
+#           cache: ${{ github.event_name != 'schedule' }}
+#           tags: "6-fpm"
+
+#       - name: Build 6-fpm-dev
+#         uses: elgohr/Publish-Docker-Github-Action@master
+#         with:
+#           name: tharrisio/laravel-php
+#           context: 6/fpm/dev
+#           username: ${{ secrets.DOCKER_USERNAME }}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
+#           registry: dkr.tharris.io
+#           cache: ${{ github.event_name != 'schedule' }}
+#           tags: "6-fpm-dev"
