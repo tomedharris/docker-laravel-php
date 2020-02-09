@@ -1,4 +1,4 @@
-FROM tharrisio/laravel-php:6-fpm
+FROM tomedharris/laravel-php:6-fpm
 
 RUN pecl install xdebug-2.7.2 \
     && docker-php-ext-enable xdebug
