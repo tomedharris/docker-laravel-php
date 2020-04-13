@@ -37,7 +37,9 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
     && docker-php-ext-install gd xsl soap bcmath exif
 
 RUN pecl install zip \
-    && docker-php-ext-enable zip
+    && docker-php-ext-enable zip \
+    && pecl install redis \
+    && docker-php-ext-enable redis
 
 RUN echo "pm.status_path = /status" >> /usr/local/etc/php-fpm.d/www.conf
 RUN echo "pm.max_children = 15" >> /usr/local/etc/php-fpm.d/www.conf
