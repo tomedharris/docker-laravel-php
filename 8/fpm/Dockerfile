@@ -33,7 +33,7 @@ RUN docker-php-ext-install \
     pdo_mysql
 
 # Install GD as some functional tests use it for creating fake file uploads.
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install gd xsl soap bcmath exif
 
 RUN pecl install zip \
