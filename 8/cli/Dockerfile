@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN composer create-project laravel/laravel .
 
-FROM php:7.3-cli
+FROM php:8.0-cli
 
 # Install some updates.
 RUN apt-get update -yqq \
