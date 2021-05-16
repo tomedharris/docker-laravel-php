@@ -39,7 +39,9 @@ RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/i
 RUN pecl install zip \
     && docker-php-ext-enable zip \
     && pecl install redis \
-    && docker-php-ext-enable redis
+    && docker-php-ext-enable redis \
+    && pecl install xdebug-3.0.0 \
+    && docker-php-ext-enable xdebug
 
 WORKDIR /app
 
